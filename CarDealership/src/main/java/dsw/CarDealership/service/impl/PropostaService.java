@@ -8,7 +8,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import dsw.CarDealership.dao.PropostaDAO;
 import dsw.CarDealership.domain.Proposta;
-import dsw.CarDealership.domain.Usuario;
 import dsw.CarDealership.service.spec.IPropostaService;
 
 @Service
@@ -28,11 +27,6 @@ public class PropostaService implements IPropostaService {
 	@Transactional(readOnly = true)
 	public Proposta buscarPorId(Long id) {
 		return dao.findById(id.longValue());
-	}
-
-	@Transactional(readOnly = true)
-	public List<Proposta> buscarTodosPorUsuario(Usuario u) {
-		return dao.findAllByUsuario(u);
 	}
 	
 	@Transactional(readOnly = true)
