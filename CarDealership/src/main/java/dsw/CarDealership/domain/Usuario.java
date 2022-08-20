@@ -14,7 +14,7 @@ public class Usuario extends AbstractEntity<Long> {
 	@Column(nullable = false, length = 19)
 	private String email;
 	@NotNull
-	@Column(nullable = false, length = 19)
+	@Column(nullable = false, length = 64)
 	private String senha;
 	@NotNull
 	@Column(nullable = false, length = 19)

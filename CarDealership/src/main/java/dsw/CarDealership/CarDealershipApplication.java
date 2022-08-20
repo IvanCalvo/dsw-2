@@ -7,6 +7,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import dsw.CarDealership.dao.CarroDAO;
 import dsw.CarDealership.dao.ClienteDAO;
@@ -27,38 +28,38 @@ public class CarDealershipApplication {
 	}
 	
 	@Bean
-	public CommandLineRunner demo(CarroDAO carroDAO, LojaDAO lojaDAO, PropostaDAO propostaDAO, ClienteDAO clienteDAO, UsuarioDAO usuarioDAO) {
+	public CommandLineRunner demo(CarroDAO carroDAO, LojaDAO lojaDAO, PropostaDAO propostaDAO, ClienteDAO clienteDAO, UsuarioDAO usuarioDAO, BCryptPasswordEncoder encoder) {
 		return (args) -> {
 			
 			//Usuarios
 			Usuario u1 = new Usuario();
 			u1.setLogin("user");
 			u1.setPapel("USER");
-			u1.setSenha("user");
+			u1.setSenha(encoder.encode("user"));
 			usuarioDAO.save(u1);
 			
 			Usuario u2 = new Usuario();
 			u2.setLogin("admin");
 			u2.setPapel("ADMIN");
-			u2.setSenha("admin");
+			u2.setSenha(encoder.encode("admin"));
 			usuarioDAO.save(u2);
 			
 			Usuario u3 = new Usuario();
 			u3.setLogin("loja1");
 			u3.setPapel("LOJA");
-			u3.setSenha("loja1");
+			u3.setSenha(encoder.encode("loja1"));
 			usuarioDAO.save(u3);
 			
 			Usuario u5 = new Usuario();
 			u5.setLogin("loja2");
 			u5.setPapel("LOJA");
-			u5.setSenha("loja2");
+			u5.setSenha(encoder.encode("loja2"));
 			usuarioDAO.save(u5);
 			
 			Usuario u4 = new Usuario();
 			u4.setLogin("cliente");
 			u4.setPapel("CLIENTE");
-			u4.setSenha("cliente");
+			u4.setSenha(encoder.encode("cliente"));
 			usuarioDAO.save(u4);
 			
 			//Lojas
