@@ -14,6 +14,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import dsw.CarDealership.domain.Loja;
 import dsw.CarDealership.service.spec.ILojaService;
+import dsw.CarDealership.service.spec.ICarroService;
 
 @Controller
 @RequestMapping("/lojas")
@@ -21,6 +22,9 @@ public class LojaController {
 	
 	@Autowired
 	private ILojaService service;
+	
+	@Autowired
+	private ICarroService serviceCarro;
 	
 	@GetMapping("/cadastrar")
 	public String cadastrar(Loja loja) {
@@ -31,6 +35,12 @@ public class LojaController {
 	public String listar(ModelMap model) {
 		model.addAttribute("lojas", service.buscarTodos());
 		return "loja/lista";
+	}
+	
+	@GetMapping("/listarCarro")
+	public String listarCarro(ModelMap model) {
+		model.addAttribute("carros", serviceCarro.buscarTodos());
+		return "loja/listaCarro";
 	}
 	
 	@PostMapping("/salvar")
@@ -49,6 +59,13 @@ public class LojaController {
 	public String preEditar(@PathVariable("id") Long id, ModelMap model) {
 		model.addAttribute("loja", service.buscarPorId(id));
 		return "loja/cadastro";
+	}
+	
+	@GetMapping("/excluir/{id}")
+	public String excluir(@PathVariable("id") Long id, RedirectAttributes attr) {
+		service.excluir(id);
+		attr.addFlashAttribute("sucess", "loja.delete.sucess");
+		return "redirect:/lojas/listar";
 	}
 	
 	@PostMapping("/editar")

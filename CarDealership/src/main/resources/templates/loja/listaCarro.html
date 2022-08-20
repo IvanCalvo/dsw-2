@@ -49,6 +49,7 @@
 			</thead>
 			<tbody>
 				<tr th:each="carro : ${carros}">
+				<div th:if="${'loja1' == carro.loja.nome}">
 					<td th:text="${carro.id}"></td>
 					<td th:text="${carro.loja.nome}"></td>
 					<td th:text="${carro.placa}"></td>
@@ -58,7 +59,18 @@
 					<td th:text="${carro.quilometragem}"></td>
 					<td th:text="${carro.descricao}"></td>
 					<td th:text="${carro.valor}"></td>
-					<td th:text="${carro.fotos}"></td>				
+					<td th:text="${carro.fotos}"></td>
+					<td >
+						<a class="btn btn-info btn-sm"
+							th:href="@{/carros/editar/{id} (id=${carro.id}) }" role="button"> 
+							<span class="oi oi-brush" th:title="#{link.editar.label}" aria-hidden="true">Editar</span>
+						</a>
+						<a class="btn btn-info btn-sm"
+							th:href="@{/carros/excluir/{id} (id=${carro.id}) }" role="button"> 
+							<span class="oi oi-brush" th:title="#{link.excluir.label}" aria-hidden="true">Excluir</span>
+						</a>
+					</td>	
+				</div>
 				</tr>
 			</tbody>
 		</table>
