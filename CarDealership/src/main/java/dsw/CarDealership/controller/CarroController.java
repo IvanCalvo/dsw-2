@@ -5,6 +5,7 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -15,6 +16,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import dsw.CarDealership.domain.Usuario;
+import dsw.CarDealership.security.UsuarioDetails;
 import dsw.CarDealership.domain.Carro;
 import dsw.CarDealership.domain.Loja;
 import dsw.CarDealership.service.spec.ICarroService;
@@ -33,6 +36,11 @@ public class CarroController {
 	public String cadastrar(Carro carro) {
 		return "carro/cadastro";
 	}
+	
+	private Usuario getUsuario() {
+		UsuarioDetails usuarioDetails = (UsuarioDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		return usuarioDetails.getUsuario();
+	}
 
 	@GetMapping("/listar")
 	public String listar(ModelMap model) {
@@ -49,6 +57,9 @@ public class CarroController {
 
 		carroService.salvar(carro);
 		attr.addFlashAttribute("sucess", "carro.create.sucess");
+		if(this.getUsuario().getPapel().equals("LOJA")) {
+			return "redirect:/lojas/listarCarro";
+		}
 		return "redirect:/carros/listar";
 	}
 	
@@ -67,13 +78,20 @@ public class CarroController {
 
 		carroService.salvar(carro);
 		attr.addFlashAttribute("sucess", "carro.edit.sucess");
+		if(this.getUsuario().getPapel().equals("LOJA")) {
+			return "redirect:/lojas/listarCarro";
+		}
 		return "redirect:/carros/listar";
+		
 	}
 	
 	@GetMapping("/excluir/{id}")
 	public String excluir(@PathVariable("id") Long id, RedirectAttributes attr) {
 		carroService.excluir(id);
 		attr.addFlashAttribute("sucess", "carro.delete.sucess");
+		if(this.getUsuario().getPapel().equals("LOJA")) {
+			return "redirect:/lojas/listarCarro";
+		}
 		return "redirect:/carros/listar";
 	}
 

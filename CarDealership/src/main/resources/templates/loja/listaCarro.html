@@ -31,6 +31,8 @@
 <body>
 	<div class="container my-2" align="center">
 		<h1>Carros</h1>
+		<a th:href="@{/}">Home</a>
+		<hr>
 		<input type="text" id="modelFilter" onkeyup="filterFunction()" placeholder ="Procure pelo modelo">
 		<table border="1" class="table table-striped table-responsive-md" id="tabelaCarros">
 			<thead>
@@ -49,7 +51,7 @@
 			</thead>
 			<tbody>
 				<tr th:each="carro : ${carros}">
-				<div th:if="${'loja1' == carro.loja.nome}">
+				<div th:if="${#httpServletRequest.remoteUser == carro.loja.nome}">
 					<td th:text="${carro.id}"></td>
 					<td th:text="${carro.loja.nome}"></td>
 					<td th:text="${carro.placa}"></td>
