@@ -12,7 +12,7 @@
 			<input type="hidden" id="id" th:field="*{id}">
 			
 			<span th:if="${#fields.hasErrors('loja.id')}" th:errors="*{loja.id}" class="text-danger"></span>
-			<input type="text" th:field="*{loja.id}" placeholder="Id Loja" class="form-control mb-4 col-4">
+			<input type="text" th:field="*{loja.id}" placeholder="Id Loja" class="form-control mb-4 col-4" readonly>
 			
       		<span th:if="${#fields.hasErrors('placa')}" th:errors="*{placa}" class="text-danger"></span>
 			<input type="text" th:field="*{placa}" placeholder="Placa" class="form-control mb-4 col-4">
@@ -41,7 +41,7 @@
 			<button type="submit" class="btn btn-info col-2">Salvar</button>
 		</form>
 		<hr>
-		<a th:href="@{/carros/listar}">Retornar para a lista de carros</a>
+		<a th:href="@{/lojas/listarCarro}">Retornar para a lista de carros</a>
 	</div>
 </body>
 </html>
