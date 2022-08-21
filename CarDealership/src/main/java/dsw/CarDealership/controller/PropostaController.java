@@ -60,7 +60,7 @@ public class PropostaController {
 
 		propostaService.salvar(proposta);
 		attr.addFlashAttribute("sucess", "proposta.edit.sucess");
-		return "redirect:/propostas/listar";
+		return "redirect:/lojas/listarProposta";
 	}
 	
 	@GetMapping("/excluir/{id}")

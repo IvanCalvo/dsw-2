@@ -14,6 +14,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import dsw.CarDealership.domain.Loja;
 import dsw.CarDealership.service.spec.ILojaService;
+import dsw.CarDealership.service.spec.IPropostaService;
 import dsw.CarDealership.service.spec.ICarroService;
 
 @Controller
@@ -25,6 +26,9 @@ public class LojaController {
 	
 	@Autowired
 	private ICarroService serviceCarro;
+	
+	@Autowired
+	private IPropostaService serviceProposta;
 	
 	@GetMapping("/cadastrar")
 	public String cadastrar(Loja loja) {
@@ -41,6 +45,12 @@ public class LojaController {
 	public String listarCarro(ModelMap model) {
 		model.addAttribute("carros", serviceCarro.buscarTodos());
 		return "loja/listaCarro";
+	}
+	
+	@GetMapping("/listarProposta")
+	public String listarProposta(ModelMap model) {
+		model.addAttribute("propostas", serviceProposta.buscarTodos());
+		return "loja/listaProposta";
 	}
 	
 	@PostMapping("/salvar")

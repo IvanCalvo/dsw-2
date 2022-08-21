@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+	<head>
+		<title>CarDealership</title>
+		<link href="${pageContext.request.contextPath}/layout.css" rel="stylesheet" type="text/css"/>
+	</head>
+	
+	<body>
+		<div align="center">
+			<table border="1">
+			<form action="#" th:action="${proposta.id == null} ? @{/propostas/salvar} : @{/propostas/editar}" th:object="${proposta}" method="POST">
+			<input type="hidden" id="id" th:field="*{id}">
+			
+			<span th:if="${#fields.hasErrors('id')}" th:errors="*{id}" class="text-danger"></span>
+			<input type="text" th:field="*{id}" placeholder="Id Proposta" class="form-control mb-4 col-4">
+			
+      		<span th:if="${#fields.hasErrors('condPagamento')}" th:errors="*{condPagamento}" class="text-danger"></span>
+			<input type="text" th:field="*{condPagamento}" placeholder="Condição Pagamento" class="form-control mb-4 col-4">
+      		
+      		<span th:if="${#fields.hasErrors('dataProposta')}" th:errors="*{dataProposta}" class="text-danger"></span>
+			<input type="text" th:field="*{dataProposta}" placeholder="Data Proposta" class="form-control mb-4 col-4">
+			
+			<span th:if="${#fields.hasErrors('status')}" th:errors="*{status}" class="text-danger"></span>
+			<input type="text" th:field="*{status}" placeholder="Status" class="form-control mb-4 col-4">
+			
+			<span th:if="${#fields.hasErrors('cliente.id')}" th:errors="*{cliente.id}" class="text-danger"></span>
+			<input type="text" th:field="*{cliente.id}" placeholder="Id Cliente" class="form-control mb-4 col-4">
+			
+			<span th:if="${#fields.hasErrors('carro.id')}" th:errors="*{carro.id}" class="text-danger"></span>
+			<input type="text" th:field="*{carro.id}" placeholder="Id Carro" class="form-control mb-4 col-4">
+			
+			<span th:if="${#fields.hasErrors('valor')}" th:errors="*{valor}" class="text-danger"></span>
+			<input type="text" th:field="*{valor}" placeholder="valor" class="form-control mb-4 col-4">
+			
+			<button type="submit" class="btn btn-info col-2">Salvar</button>
+		</form>
+		</table>
+		</div>
+	</body>
+
+</html>
