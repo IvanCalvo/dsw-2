@@ -15,6 +15,7 @@
 					<th th:text="#{loja.nome}"></th>
 					<th th:text="#{loja.descricao}"></th>
 					<th th:text="#{loja.cnpj}"></th>
+					<th>Ações</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -23,7 +24,7 @@
 					<td th:text="${loja.nome}"></td>
 					<td th:text="${loja.descricao}"></td>
 					<td th:text="${loja.cnpj}"></td>
-										<td >
+										<td>
 						<a class="btn btn-info btn-sm"
 							th:href="@{/lojas/editar/{id} (id=${loja.id}) }" role="button"> 
 							<span class="oi oi-brush" th:title="#{link.editar.label}" aria-hidden="true">Editar</span>

@@ -73,7 +73,7 @@ public class LojaController {
 		
 		// Apenas rejeita se o problema não for com o CNPJ (CNPJ campo read-only) 
 		
-		if (result.getFieldErrorCount() > 1 || result.getFieldError("CNPJ") == null) {
+		if (result.hasErrors()) {
 			return "loja/cadastro";
 		}
 
