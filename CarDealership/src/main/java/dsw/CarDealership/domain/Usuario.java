@@ -9,9 +9,6 @@ import javax.validation.constraints.NotNull;
 @Inheritance(strategy = InheritanceType.JOINED)
 public class Usuario extends AbstractEntity<Long> {
 	
-	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Long id;
-
 	@NotNull
 	@Column(nullable = false, unique = true, length = 19)
 	private String email;
