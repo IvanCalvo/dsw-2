@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 @SuppressWarnings("serial")
 @Entity
 @Table(name = "Cliente")
@@ -25,7 +27,8 @@ public class Cliente extends Usuario{
 	@Column(nullable = false, length = 19)
 	private String sexo;
 	@NotNull
-	@Column(nullable = false, length = 19)
+	@Column(nullable = false, length = 30)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate dataDeNascimento;
 
 	public String getCpf() {

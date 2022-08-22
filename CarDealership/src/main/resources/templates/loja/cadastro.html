@@ -11,6 +11,17 @@
 		<form action="#" th:action="${loja.id == null} ? @{/lojas/salvar} : @{/lojas/editar}" th:object="${loja}" method="POST">
 			<input type="hidden" id="id" th:field="*{id}">
 			
+			<span th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="text-danger"></span>
+			<input type="text" th:field="*{email}" placeholder="Email" class="form-control mb-4 col-4">
+			
+			<span th:if="${#fields.hasErrors('senha')}" th:errors="*{senha}" class="text-danger"></span>
+			<input type="text" th:field="*{senha}" placeholder="Senha" class="form-control mb-4 col-4">
+			
+			<select class="form-control" th:field="*{papel}"
+				th:classappend="${#fields.hasErrors('papel')} ? is-invalid">
+				<option value="LOJA">LOJA</option>
+			</select>
+			
       		<span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}" class="text-danger"></span>
 			<input type="text" th:field="*{nome}" placeholder="Nome" class="form-control mb-4 col-4">
       		

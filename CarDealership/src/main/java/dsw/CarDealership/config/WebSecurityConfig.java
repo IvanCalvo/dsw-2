@@ -43,7 +43,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests()
 				.antMatchers("/", "/index", "/error","/carros/listar").permitAll()
 				.antMatchers("/propostas/**","/carros/**").hasAnyAuthority("CLIENTE","LOJA")
-				.antMatchers("/usuarios/**", "/admin/**").hasAuthority("ADMIN")
+				.antMatchers("/usuarios/**", "/admin/**","/admins/**").hasAuthority("ADMIN")
 				.antMatchers("lojas/**").hasAnyAuthority("LOJA","ADMIN")
 				.antMatchers("/login/**", "/js/**", "/css/**", "/image/**", "/webjars/**").permitAll()
 				.anyRequest().authenticated()
