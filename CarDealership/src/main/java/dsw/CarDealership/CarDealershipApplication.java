@@ -34,14 +34,14 @@ public class CarDealershipApplication {
 			//Usuarios
 			
 			Usuario u2 = new Usuario();
-			u2.setLogin("admin");
+			u2.setEmail("admin");
 			u2.setPapel("ADMIN");
 			u2.setSenha(encoder.encode("admin"));
 			usuarioDAO.save(u2);
 			
 			//Lojas
 			Loja l1 = new Loja();
-			l1.setLogin("loja1");
+			l1.setEmail("loja1");
 			l1.setPapel("LOJA");
 			l1.setSenha(encoder.encode("loja1"));
 			l1.setNome("loja1");
@@ -50,7 +50,7 @@ public class CarDealershipApplication {
 			lojaDAO.save(l1);
 			
 			Loja l2 = new Loja();
-			l2.setLogin("loja2");
+			l2.setEmail("loja2");
 			l2.setPapel("LOJA");
 			l2.setSenha(encoder.encode("loja2"));
 			l2.setNome("loja2");
@@ -85,7 +85,7 @@ public class CarDealershipApplication {
 			
 			//Clientes
 			Cliente cl1 = new Cliente();
-			cl1.setLogin("cliente");
+			cl1.setEmail("cliente");
 			cl1.setPapel("CLIENTE");
 			cl1.setSenha(encoder.encode("cliente"));
 			cl1.setCpf("124564564");
