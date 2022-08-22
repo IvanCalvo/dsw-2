@@ -12,10 +12,10 @@
 			<input type="hidden" id="id" th:field="*{id}">
 			
 			<span th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="text-danger"></span>
-			<input type="text" th:field="*{email}" placeholder="Email" class="form-control mb-4 col-4">
+			<input type="text" th:field="*{email}" placeholder="Email" class="form-control mb-4 col-4" required="required">
 			
 			<span th:if="${#fields.hasErrors('senha')}" th:errors="*{senha}" class="text-danger"></span>
-			<input type="text" th:field="*{senha}" placeholder="Senha" class="form-control mb-4 col-4">
+			<input type="text" th:field="*{senha}" placeholder="Senha" class="form-control mb-4 col-4" required="required">
 			
 			<select class="form-control" th:field="*{papel}"
 				th:classappend="${#fields.hasErrors('papel')} ? is-invalid">
