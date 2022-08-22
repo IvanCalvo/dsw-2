@@ -43,10 +43,8 @@
 					<!--<td th:text ="${Proposta.dataProposta}"></td>  -->
 					<td>DataProposta</td>
 					<div sec:authorize="hasAuthority('LOJA')">
-						<div th:if="${Proposta.status == 'ACEITO'}">
-							<td>Fechado</td>
-						</div>
-						<div th:unless="${Proposta.status == 'ACEITO'}">
+						<td><a th:href="@{/propostas/excluir/{id} (id=${Proposta.id}) }">Excluir Proposta</a></td>
+						<div th:if="${Proposta.status == 'ABERTO'}">
 							<td><a th:href="@{/propostas/editar/{id} (id=${Proposta.id}) }">Responder Proposta</a></td>
 						</div>
 					</div>
