@@ -15,9 +15,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import dsw.CarDealership.domain.Proposta;
 import dsw.CarDealership.domain.Usuario;
-import dsw.CarDealership.domain.Cliente;
 import dsw.CarDealership.security.UsuarioDetails;
-import dsw.CarDealership.service.spec.ILojaService;
 import dsw.CarDealership.service.spec.IPropostaService;
 import dsw.CarDealership.service.spec.IClienteService;
 
