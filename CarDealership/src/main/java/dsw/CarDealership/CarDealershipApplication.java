@@ -32,11 +32,6 @@ public class CarDealershipApplication {
 		return (args) -> {
 			
 			//Usuarios
-			Usuario u1 = new Usuario();
-			u1.setLogin("user");
-			u1.setPapel("USER");
-			u1.setSenha(encoder.encode("user"));
-			usuarioDAO.save(u1);
 			
 			Usuario u2 = new Usuario();
 			u2.setLogin("admin");
@@ -44,32 +39,20 @@ public class CarDealershipApplication {
 			u2.setSenha(encoder.encode("admin"));
 			usuarioDAO.save(u2);
 			
-			Usuario u3 = new Usuario();
-			u3.setLogin("loja1");
-			u3.setPapel("LOJA");
-			u3.setSenha(encoder.encode("loja1"));
-			usuarioDAO.save(u3);
-			
-			Usuario u5 = new Usuario();
-			u5.setLogin("loja2");
-			u5.setPapel("LOJA");
-			u5.setSenha(encoder.encode("loja2"));
-			usuarioDAO.save(u5);
-			
-			Usuario u4 = new Usuario();
-			u4.setLogin("cliente");
-			u4.setPapel("CLIENTE");
-			u4.setSenha(encoder.encode("cliente"));
-			usuarioDAO.save(u4);
-			
 			//Lojas
 			Loja l1 = new Loja();
+			l1.setLogin("loja1");
+			l1.setPapel("LOJA");
+			l1.setSenha(encoder.encode("loja1"));
 			l1.setNome("loja1");
 			l1.setDescricao("Nada a dizer");
 			l1.setCnpj("1234589");
 			lojaDAO.save(l1);
 			
 			Loja l2 = new Loja();
+			l2.setLogin("loja2");
+			l2.setPapel("LOJA");
+			l2.setSenha(encoder.encode("loja2"));
 			l2.setNome("loja2");
 			l2.setDescricao("Nada a dizer");
 			l2.setCnpj("1234");
@@ -102,6 +85,9 @@ public class CarDealershipApplication {
 			
 			//Clientes
 			Cliente cl1 = new Cliente();
+			cl1.setLogin("cliente");
+			cl1.setPapel("CLIENTE");
+			cl1.setSenha(encoder.encode("cliente"));
 			cl1.setCpf("124564564");
 			cl1.setDataDeNascimento(LocalDate.parse("2000-02-02"));
 			cl1.setNome("Roberval");

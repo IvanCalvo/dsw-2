@@ -10,7 +10,7 @@ import javax.validation.constraints.NotNull;
 @SuppressWarnings("serial")
 @Entity
 @Table(name = "Cliente")
-public class Cliente extends AbstractEntity<Long>{
+public class Cliente extends Usuario{
 	
 	@NotNull
 	@Column(nullable = false, length = 19)

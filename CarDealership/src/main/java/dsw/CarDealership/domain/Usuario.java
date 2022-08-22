@@ -1,21 +1,25 @@
 package dsw.CarDealership.domain;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 @SuppressWarnings("serial")
 @Entity
 @Table(name = "Usuario")
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Usuario extends AbstractEntity<Long> {
+	
+	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
+	private Long id;
 
 	@NotNull
-	@Column(nullable = false, length = 19)
+	@Column(nullable = false, unique = true, length = 19)
 	private String email;
+	
 	@NotNull
 	@Column(nullable = false, length = 64)
 	private String senha;
+	
 	@NotNull
 	@Column(nullable = false, length = 19)
 	private String papel;
