@@ -55,18 +55,18 @@
 					</br>
 						<label for="condPagamento">Condições de Pagamento</label>
 			      		<span th:if="${#fields.hasErrors('condPagamento')}" th:errors="*{condPagamento}" class="text-danger"></span>
-						<input type="text" th:field="*{condPagamento}" placeholder="Condição Pagamento" class="form-control mb-4 col-4" >
+						<input type="text" th:field="*{condPagamento}" placeholder="Condição Pagamento" class="form-control mb-4 col-4" required>
 					</br>
 		      		
 					</br>
 			      		<label for="dataProposta">Data da Proposta</label> 
 			      		<span th:if="${#fields.hasErrors('dataProposta')}" th:errors="*{dataProposta}" class="text-danger"></span>
-						<input type="date" th:field="*{dataProposta}" placeholder="Data Proposta" class="form-control mb-4 col-4">
+						<input type="date" th:field="*{dataProposta}" placeholder="Data Proposta" class="form-control mb-4 col-4" required>
 					</br>
 					</br>
 						<label for="status">Status:</label> 
 						<select class="form-control" th:field="*{status}"
-									th:classappend="${#fields.hasErrors('status')} ? is-invalid">
+									th:classappend="${#fields.hasErrors('status')} ? is-invalid" required>
 								<option sec:authorize="hasAuthority('CLIENTE')"value="ABERTO">ABERTO</option>
 								<option sec:authorize="hasAuthority('LOJA')" value="RECUSADO">RECUSAR</option>
 								<option sec:authorize="hasAuthority('LOJA')" value="ACEITO">ACEITAR</option>
@@ -82,13 +82,14 @@
 
 						<label for="valor">Valor:</label> 
 						<span th:if="${#fields.hasErrors('valor')}" th:errors="*{valor}" class="text-danger"></span>
-						<input type="text" th:field="*{valor}" placeholder="valor" class="form-control mb-4 col-4" >
+						<input type="text" th:field="*{valor}" placeholder="valor" class="form-control mb-4 col-4" required>
 					</br></br>
 					<button type="submit" class="btn btn-info col-2">Salvar</button>
 				</p>
 					
 			</div>
 		</form>
+
 		</table>
 	</div>
 </body>

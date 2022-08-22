@@ -39,10 +39,9 @@ public class Carro extends AbstractEntity<Long>{
 	@NotBlank(message = "{NotBlank.carro.descricao}")
 	@Column(nullable = false, length = 19)
 	private String descricao;
-	@NotNull(message = "{NotNull.carro.autor}")
+	@NotNull(message = "{NotNull.carro.valor}")
 	@Column(columnDefinition = "DECIMAL(8,2) DEFAULT 0.0")
 	private BigDecimal valor;  
-	@NotBlank(message = "{NotBlank.carro.autor}")
 	@Column(nullable = false, length = 19)
 	private String fotos;
 	
