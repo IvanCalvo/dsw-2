@@ -3,6 +3,7 @@ package dsw.CarDealership.controller;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -13,18 +14,33 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import dsw.CarDealership.domain.Proposta;
+import dsw.CarDealership.domain.Usuario;
+import dsw.CarDealership.domain.Cliente;
+import dsw.CarDealership.security.UsuarioDetails;
+import dsw.CarDealership.service.spec.ILojaService;
 import dsw.CarDealership.service.spec.IPropostaService;
+import dsw.CarDealership.service.spec.IClienteService;
 
 @Controller
 @RequestMapping("/propostas")
 public class PropostaController {
 	@Autowired
 	private IPropostaService propostaService;
+	
+	@Autowired
+	private IClienteService clienteService;
 
 	
 	@GetMapping("/cadastrar")
-	public String cadastrar(Proposta proposta) {
+	public String cadastrar(Proposta proposta, ModelMap model) {
+		proposta.setCliente(clienteService.buscarPorId(getUsuario().getId()));
+		model.addAttribute("proposta", proposta);
 		return "proposta/cadastro";
+	}
+	
+	private Usuario getUsuario() {
+		UsuarioDetails usuarioDetails = (UsuarioDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		return usuarioDetails.getUsuario();
 	}
 
 	@GetMapping("/listar")
