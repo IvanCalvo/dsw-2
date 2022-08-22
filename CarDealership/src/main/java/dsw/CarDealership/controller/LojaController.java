@@ -3,6 +3,7 @@ package dsw.CarDealership.controller;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -29,6 +30,9 @@ public class LojaController {
 	
 	@Autowired
 	private IPropostaService serviceProposta;
+	
+	@Autowired
+	private BCryptPasswordEncoder encoder;
 	
 	@GetMapping("/cadastrar")
 	public String cadastrar(Loja loja) {
@@ -60,6 +64,10 @@ public class LojaController {
 			return "loja/cadastro";
 		}
 		
+		System.out.println("password = " + loja.getSenha());
+		
+		loja.setSenha(encoder.encode(loja.getSenha()));
+		
 		service.salvar(loja);
 		attr.addFlashAttribute("sucess", "loja.create.sucess");
 		return "redirect:/lojas/listar";
@@ -86,6 +94,8 @@ public class LojaController {
 		if (result.hasErrors()) {
 			return "loja/cadastro";
 		}
+		
+		System.out.println(loja.getSenha());
 
 		service.salvar(loja);
 		attr.addFlashAttribute("sucess", "loja.edit.sucess");
