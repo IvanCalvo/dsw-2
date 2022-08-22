@@ -32,6 +32,7 @@
 				</div>
 			</tr>
 				<tr th:each="Proposta : ${propostas}">
+				<div th:if="${#httpServletRequest.remoteUser == Proposta.cliente.email}">
 					<td th:text ="${Proposta.id}"></td>
 					<td th:text ="${Proposta.carro.modelo}"></td>
 					<td th:text ="${Proposta.carro.loja.nome}"></td>
@@ -44,6 +45,7 @@
 									<td><a th:href="@{/propostas/editar/{id} (id=${Proposta.id}) }">Responder Proposta</a></td>
 								</div>
 							</div>
+				</div>
 				</tr>
 		</table>
 	</div>
