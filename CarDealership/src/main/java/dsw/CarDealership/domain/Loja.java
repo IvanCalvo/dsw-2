@@ -1,7 +1,11 @@
 package dsw.CarDealership.domain;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -19,6 +23,8 @@ public class Loja extends Usuario{
 	@NotNull
 	@Column(nullable = false, length = 19)
 	private String cnpj;
+	@OneToMany(mappedBy ="loja", cascade = CascadeType.REMOVE)
+	private List<Carro> carros;
 
 	public String getNome() {
 		return nome;
