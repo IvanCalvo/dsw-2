@@ -10,9 +10,9 @@
 		<h2>
 			<div sec:authorize="hasAuthority('LOJA')">
 					<a th:href="@{/}">Menu Loja</a>
+			</div>
 			<div sec:authorize="hasAuthority('CLIENTE')">
 					<a th:href="@{/}">Menu Cliente</a>
-			</div>
 			</div>
 		</h2>
 	</div>
@@ -27,7 +27,6 @@
 				<th>Condição de Pagamento</th>
 				<th>valor</th>
 				<th>Status</th>
-				<th>Data de Proposta</th>
 				<div sec:authorize="hasAuthority('LOJA')">
 						<th>Ações</th>
 				</div>
@@ -39,7 +38,6 @@
 					<td th:text ="${Proposta.condPagamento}"></td>
 					<td th:text ="${Proposta.valor}"></td>
 					<td th:text ="${Proposta.status}"></td>
-					<!--<td th:text ="${Proposta.dataProposta}"></td>  -->
 							<div sec:authorize="hasAuthority('LOJA')">
 								<td><a th:href="@{/propostas/edicao/{id} : (id=${Proposta.id}) }">Responder Proposta</a></td>
 							</div>
