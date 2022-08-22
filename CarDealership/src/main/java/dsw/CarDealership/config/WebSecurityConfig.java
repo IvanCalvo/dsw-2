@@ -41,7 +41,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
-				.antMatchers("/", "/index", "/error","/carros/**", "/lojas/**", "/user/**", "/admin/**", "/propostas/**").permitAll()
+				.antMatchers("/", "/index", "/error","/carros/listar").permitAll()
+				.antMatchers("/propostas/**","/carros/**").hasAnyAuthority("CLIENTE","LOJA")
+				.antMatchers("/usuarios/**", "/admin/**").hasAuthority("ADMIN")
+				.antMatchers("lojas/**").hasAnyAuthority("LOJA","ADMIN")
 				.antMatchers("/login/**", "/js/**", "/css/**", "/image/**", "/webjars/**").permitAll()
 				.anyRequest().authenticated()
 			.and()
