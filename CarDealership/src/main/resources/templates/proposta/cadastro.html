@@ -42,10 +42,10 @@
 						<input type="hidden" id="id" th:field="*{id}">
 						
 			      		<span th:if="${#fields.hasErrors('condPagamento')}" th:errors="*{condPagamento}" class="text-danger"></span>
-						<input type="text" th:field="*{condPagamento}" placeholder="Condição Pagamento" class="form-control mb-4 col-4">
+						<input type="text" th:field="*{condPagamento}" placeholder="Condição Pagamento" class="form-control mb-4 col-4" required="required">
 			      		
 			      		<span th:if="${#fields.hasErrors('dataProposta')}" th:errors="*{dataProposta}" class="text-danger"></span>
-						<input type="date" th:field="*{dataProposta}" placeholder="Data Proposta" class="form-control mb-4 col-4">
+						<input type="date" th:field="*{dataProposta}" placeholder="Data Proposta" class="form-control mb-4 col-4" required="required">
 						
 		
 						<select class="form-control" th:field="*{status}"
@@ -59,10 +59,10 @@
 						<input type="text" th:field="*{cliente.id}" placeholder="Id Cliente" class="form-control mb-4 col-4" readonly>
 						
 						<span th:if="${#fields.hasErrors('carro.id')}" th:errors="*{carro.id}" class="text-danger"></span>
-						<input type="text" th:field="*{carro.id}" placeholder="Id Carro" class="form-control mb-4 col-4">
+						<input type="text" th:field="*{carro.id}" placeholder="Id Carro" class="form-control mb-4 col-4" required="required">
 						
 						<span th:if="${#fields.hasErrors('valor')}" th:errors="*{valor}" class="text-danger"></span>
-						<input type="text" th:field="*{valor}" placeholder="valor" class="form-control mb-4 col-4">
+						<input type="text" th:field="*{valor}" placeholder="valor" class="form-control mb-4 col-4" required="required">
 						
 						<button type="submit" class="btn btn-info col-2">Salvar</button>
 					</p> 
