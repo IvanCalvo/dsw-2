@@ -9,15 +9,15 @@ import javax.validation.constraints.NotNull;
 @Inheritance(strategy = InheritanceType.JOINED)
 public class Usuario extends AbstractEntity<Long> {
 	
-	@NotNull
+	@NotNull(message = "{NotNull.usuario.email}")
 	@Column(nullable = false, unique = true, length = 19)
 	private String email;
 	
-	@NotNull
+	@NotNull(message = "{NotNull.usuario.senha}")
 	@Column(nullable = false, length = 64)
 	private String senha;
 	
-	@NotNull
+	@NotNull(message = "{NotNull.usuario.papel}")
 	@Column(nullable = false, length = 19)
 	private String papel;
 

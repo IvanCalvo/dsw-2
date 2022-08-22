@@ -17,19 +17,19 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Table(name = "Cliente")
 public class Cliente extends Usuario{
 	
-	@NotNull
+	@NotNull(message = "{NotNull.cliente.nome}")
 	@Column(nullable = false, length = 19)
 	private String nome;
-	@NotNull
+	@NotNull(message = "{NotNull.cliente.cpf}")
 	@Column(nullable = false, length = 19)
 	private String cpf;
-	@NotNull
+	@NotNull(message = "{NotNull.cliente.telefone}")
 	@Column(nullable = false, length = 19)
 	private String telefone;
-	@NotNull
+	@NotNull(message = "{NotNull.cliente.sexo}")
 	@Column(nullable = false, length = 19)
 	private String sexo;
-	@NotNull
+	@NotNull(message = "{NotNull.cliente.dataDeNascimento}")
 	@Column(nullable = false, length = 30)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate dataDeNascimento;

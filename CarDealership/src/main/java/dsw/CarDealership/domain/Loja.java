@@ -14,13 +14,13 @@ import javax.validation.constraints.NotNull;
 @Table(name = "Loja")
 public class Loja extends Usuario{
 	
-	@NotNull
+	@NotNull(message = "{NotNull.loja.nome}")
 	@Column(nullable = false, length = 19)
 	private String nome;
-	@NotNull
+	@NotNull(message = "{NotNull.loja.descricao}")
 	@Column(nullable = false, length = 19)
 	private String descricao;
-	@NotNull
+	@NotNull(message = "{NotNull.loja.cnpj}")
 	@Column(nullable = false, length = 19)
 	private String cnpj;
 	@OneToMany(mappedBy ="loja", cascade = CascadeType.REMOVE)

@@ -18,24 +18,24 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Entity
 @Table(name = "Proposta")
 public class Proposta extends AbstractEntity<Long>{
-	@NotNull
+	@NotNull(message = "{NotNull.proposta.valor}")
 	@Column(columnDefinition = "DECIMAL(8,2) DEFAULT 0.0")
 	private BigDecimal valor;
-	@NotNull
+	@NotNull(message = "{NotNull.proposta.condPagamento}")
 	@Column(nullable = false, length = 19)
 	private String condPagamento;
-	@NotNull
+	@NotNull(message = "{NotNull.proposta.dataProposta}")
 	@Column(nullable = false, length = 30)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate dataProposta;
-	@NotNull
+	@NotNull(message = "{NotNull.proposta.status}")
 	@Column(nullable = false, length = 19)
 	private String status;
-	@NotNull
+	@NotNull(message = "{NotNull.proposta.cliente}")
 	@OneToOne
 	@JoinColumn(name = "cliente_id")
 	private Cliente cliente;
-	@NotNull
+	@NotNull(message = "{NotNull.proposta.carro}")
 	@ManyToOne
 	@JoinColumn(name = "carro_id")
 	private Carro carro;
