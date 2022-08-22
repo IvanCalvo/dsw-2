@@ -1,9 +1,12 @@
 package dsw.CarDealership.domain;
 
 import java.time.LocalDate;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -30,6 +33,8 @@ public class Cliente extends Usuario{
 	@Column(nullable = false, length = 30)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate dataDeNascimento;
+	@OneToMany(mappedBy ="cliente", cascade = CascadeType.REMOVE)
+	private List<Proposta> proposta;
 
 	public String getCpf() {
 		return cpf;
