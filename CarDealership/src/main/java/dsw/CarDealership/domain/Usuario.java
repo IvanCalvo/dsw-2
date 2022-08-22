@@ -25,7 +25,7 @@ public class Usuario extends AbstractEntity<Long> {
 		return email;
 	}
 
-	public void setLogin(String email) {
+	public void setEmail(String email) {
 		this.email = email;
 	}
 
