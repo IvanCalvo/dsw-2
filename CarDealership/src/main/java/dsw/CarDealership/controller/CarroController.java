@@ -33,7 +33,9 @@ public class CarroController {
 	private ILojaService lojaService;
 	
 	@GetMapping("/cadastrar")
-	public String cadastrar(Carro carro) {
+	public String cadastrar(Carro carro, ModelMap model) {
+		carro.setLoja(lojaService.buscarPorEmail(getUsuario().getEmail()));
+		model.addAttribute("carro", carro);
 		return "carro/cadastro";
 	}
 	
@@ -54,6 +56,8 @@ public class CarroController {
 		if (result.hasErrors()) {
 			return "carro/cadastro";
 		}
+		
+		carro.setLoja(lojaService.buscarPorEmail(this.getUsuario().getEmail())); 
 
 		carroService.salvar(carro);
 		attr.addFlashAttribute("sucess", "carro.create.sucess");
@@ -65,7 +69,9 @@ public class CarroController {
 	
 	@GetMapping("/editar/{id}")
 	public String preEditar(@PathVariable("id") Long id, ModelMap model) {
-		model.addAttribute("carro", carroService.buscarPorId(id));
+		Carro carro = carroService.buscarPorId(id);
+		model.addAttribute("carro", carro);
+		model.addAttribute("loja", carro.getLoja());
 		return "carro/cadastro";
 	}
 

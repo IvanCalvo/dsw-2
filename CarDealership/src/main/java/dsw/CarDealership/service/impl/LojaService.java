@@ -28,6 +28,11 @@ public class LojaService implements ILojaService{
 	public Loja buscarPorId(Long id) {
 		return dao.findById(id.longValue());
 	}
+	
+	@Transactional(readOnly = true)
+	public Loja buscarPorEmail(String email) {
+		return dao.findByemail(email);
+	}
 
 	@Transactional(readOnly = true)
 	public List<Loja> buscarTodos() {

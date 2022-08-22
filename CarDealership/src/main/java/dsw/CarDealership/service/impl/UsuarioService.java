@@ -33,4 +33,8 @@ public class UsuarioService implements IUsuarioService {
 	public List<Usuario> buscarTodos() {
 		return dao.findAll();
 	}
+	
+	public Usuario buscaUsuario(String email) {
+		return dao.getUserByUsername(email);
+	}
 }

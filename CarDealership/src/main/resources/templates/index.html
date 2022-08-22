@@ -14,7 +14,7 @@
     	<a th:href="@{/carros/listar}">Listar Veículos</a>
 	</div>
 	<div sec:authorize="hasAuthority('LOJA')">
-		<h1>Bem vindo, [[${#httpServletRequest.remoteUser}]]!"</h1>
+		<h1>Bem vindo, [[${#httpServletRequest.remoteUser}]]!</h1>
 		<ul>
             <li>
             	<a th:href="@{/carros/cadastrar}">Adicione Novo Carro</a>
@@ -28,7 +28,7 @@
 	</div>
 
 	<div sec:authorize="hasAuthority('ADMIN')">
-		<h1>Bem vindo, [[${#httpServletRequest.remoteUser}]]!"</h1>
+		<h1>Bem vindo, [[${#httpServletRequest.remoteUser}]]!</h1>
 		<ul>
             <li>
             	<a th:href="@{/usuarios/listar}">Listar Usuarios</a>
@@ -42,7 +42,7 @@
 	</div>
 
 	<div sec:authorize="hasAuthority('CLIENTE')">
-		<h1>Bem vindo, [[${#httpServletRequest.remoteUser}]]!"</h1>
+		<h1>Bem vindo, [[${#httpServletRequest.remoteUser}]]!</h1>
 		<ul>
             <li>
             	<a th:href="@{/propostas/listar}">Listar Propostas</a>

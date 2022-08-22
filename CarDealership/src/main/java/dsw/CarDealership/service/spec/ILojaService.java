@@ -12,4 +12,6 @@ public interface ILojaService {
 	void salvar(Loja loja);
 	
 	void excluir(Long id);
+	
+	Loja buscarPorEmail(String email);
 }
