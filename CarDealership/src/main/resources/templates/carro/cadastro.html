@@ -8,7 +8,7 @@
 <body>
 	<div class="container my-2">
 		<h2>Gestão de Carros</h2>
-		<form action="#" th:action="${carro.id == null} ? @{/carros/salvar} : @{/carros/editar}" th:object="${carro}" method="POST">
+		<form action="#" th:action="${carro.id == null} ? @{/carros/salvar} : @{/carros/editar}" th:object="${carro}" method="POST" enctype="multipart/form-data">
 			<input type="hidden" id="id" th:field="*{id}">
 			
 			<span th:if="${#fields.hasErrors('loja.id')}" th:errors="*{loja.id}" class="text-danger"></span>
@@ -36,7 +36,7 @@
 			<input type="text" th:field="*{valor}" placeholder="valor" class="form-control mb-4 col-4" required="required">
 			
 			<span th:if="${#fields.hasErrors('fotos')}" th:errors="*{fotos}" class="text-danger"></span>
-			<input type="file" th:field="*{fotos}" placeholder="fotos" class="form-control mb-4 col-4" required="required">
+			<input type="file" accept="image/*" multiple th:field="*{fotos}" placeholder="fotos" class="form-control mb-4 col-4">
 			
 			<button type="submit" class="btn btn-info col-2">Salvar</button>
 		</form>

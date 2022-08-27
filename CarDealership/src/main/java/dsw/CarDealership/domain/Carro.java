@@ -12,6 +12,8 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+import org.springframework.web.multipart.MultipartFile;
+
 @SuppressWarnings("serial")
 @Entity
 @Table(name = "Carro")
@@ -28,7 +30,7 @@ public class Carro extends AbstractEntity<Long>{
 	@Column(nullable = false, length = 19)
 	private String modelo; 
 	@NotBlank(message = "{NotBlank.carro.chassi}")
-	@Column(nullable = false, length = 19)
+	@Column(nullable = false, unique= true, length = 19)
 	private String chassi; 
 	@NotNull(message = "{NotNull.carro.ano}")
 	@Column(nullable = false, length = 19)
@@ -41,9 +43,10 @@ public class Carro extends AbstractEntity<Long>{
 	private String descricao;
 	@NotNull(message = "{NotNull.carro.valor}")
 	@Column(columnDefinition = "DECIMAL(8,2) DEFAULT 0.0")
-	private BigDecimal valor;  
-	@Column(nullable = false, length = 19)
-	private String fotos;
+	private BigDecimal valor;
+
+	@OneToMany(mappedBy="carro", cascade = CascadeType.REMOVE)
+	private List<MultipartFile> fotos;
 	
 	@OneToMany(mappedBy ="carro", cascade = CascadeType.REMOVE)
 	private List<Proposta> proposta;
@@ -112,11 +115,11 @@ public class Carro extends AbstractEntity<Long>{
 		this.valor = valor;
 	}
 
-	public String getFotos() {
+	public List<MultipartFile> getFotos() {
 		return fotos;
 	}
 
-	public void setFotos(String fotos) {
+	public void setFotos(List<MultipartFile> fotos) {
 		this.fotos = fotos;
 	}
 }
