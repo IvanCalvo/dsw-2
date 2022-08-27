@@ -14,10 +14,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import dsw.CarDealership.domain.Proposta;
+import dsw.CarDealership.domain.Carro;
 import dsw.CarDealership.domain.Usuario;
 import dsw.CarDealership.security.UsuarioDetails;
 import dsw.CarDealership.service.spec.IPropostaService;
 import dsw.CarDealership.service.spec.IClienteService;
+import dsw.CarDealership.service.spec.ICarroService;
 
 @Controller
 @RequestMapping("/propostas")
@@ -27,11 +29,22 @@ public class PropostaController {
 	
 	@Autowired
 	private IClienteService clienteService;
+	
+	@Autowired
+	private ICarroService carroService;
 
 	
 	@GetMapping("/cadastrar")
 	public String cadastrar(Proposta proposta, ModelMap model) {
 		proposta.setCliente(clienteService.buscarPorId(getUsuario().getId()));
+		model.addAttribute("proposta", proposta);
+		return "proposta/cadastro";
+	}
+	
+	@GetMapping("/cadastrar/{id}")
+	public String cadastrarNova(@PathVariable("id") Long id,Proposta proposta, ModelMap model) {
+		proposta.setCliente(clienteService.buscarPorId(getUsuario().getId()));
+		proposta.setCarro(carroService.buscarPorId(id));
 		model.addAttribute("proposta", proposta);
 		return "proposta/cadastro";
 	}
