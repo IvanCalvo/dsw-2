@@ -1,32 +1,43 @@
 package dsw.CarDealership.domain;
 
 import java.time.LocalDate;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
+import dsw.CarDealership.validation.UniqueCPF;
 
 @SuppressWarnings("serial")
 @Entity
 @Table(name = "Cliente")
-public class Cliente extends AbstractEntity<Long>{
+public class Cliente extends Usuario{
 	
-	@NotNull
+	@NotNull(message = "{NotNull.cliente.nome}")
 	@Column(nullable = false, length = 19)
 	private String nome;
-	@NotNull
+	@NotNull(message = "{NotNull.cliente.cpf}")
+	@UniqueCPF(message = "{NotUnique.cliente.cpf}")
 	@Column(nullable = false, length = 19)
 	private String cpf;
-	@NotNull
+	@NotNull(message = "{NotNull.cliente.telefone}")
 	@Column(nullable = false, length = 19)
 	private String telefone;
-	@NotNull
+	@NotNull(message = "{NotNull.cliente.sexo}")
 	@Column(nullable = false, length = 19)
 	private String sexo;
-	@NotNull
-	@Column(nullable = false, length = 19)
+	@NotNull(message = "{NotNull.cliente.dataDeNascimento}")
+	@Column(nullable = false, length = 30)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate dataDeNascimento;
+	@OneToMany(mappedBy ="cliente", cascade = CascadeType.REMOVE)
+	private List<Proposta> proposta;
 
 	public String getCpf() {
 		return cpf;

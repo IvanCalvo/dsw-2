@@ -1,22 +1,26 @@
 package dsw.CarDealership.domain;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+
+import dsw.CarDealership.validation.UniqueEMAIL;
 
 @SuppressWarnings("serial")
 @Entity
 @Table(name = "Usuario")
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Usuario extends AbstractEntity<Long> {
-
-	@NotNull
-	@Column(nullable = false, length = 19)
+	
+	@NotNull(message = "{NotNull.usuario.email}")
+	@UniqueEMAIL(message = "{NotUnique.usuario.email}")
+	@Column(nullable = false, unique = true, length = 19)
 	private String email;
-	@NotNull
-	@Column(nullable = false, length = 19)
+	
+	@NotNull(message = "{NotNull.usuario.senha}")
+	@Column(nullable = false, length = 64)
 	private String senha;
-	@NotNull
+	
+	@NotNull(message = "{NotNull.usuario.papel}")
 	@Column(nullable = false, length = 19)
 	private String papel;
 
@@ -24,7 +28,7 @@ public class Usuario extends AbstractEntity<Long> {
 		return email;
 	}
 
-	public void setLogin(String email) {
+	public void setEmail(String email) {
 		this.email = email;
 	}
 
