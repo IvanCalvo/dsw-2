@@ -22,7 +22,7 @@ public interface LojaDAO extends CrudRepository<Loja, Long>{
 	@Query("SELECT l FROM Loja l WHERE l.cnpj = :cnpj")
 	Loja findByCNPJ(@Param ("cnpj") String cnpj);
 	
-	@Query("SELECT l FROM Loja l WHERE l.nome = :email")
+	@Query("SELECT l FROM Loja l WHERE l.email = :email")
 	Loja findByemail(@Param("email") String email);
 	
 }
