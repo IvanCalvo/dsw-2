@@ -67,6 +67,15 @@ public class CarDealershipApplication {
 			l3.setCnpj("1234588");
 			lojaDAO.save(l3);
 			
+			Loja l4 = new Loja();
+			l4.setEmail("loja4");
+			l4.setPapel("LOJA");
+			l4.setSenha(encoder.encode("loja4"));
+			l4.setNome("loja4");
+			l4.setDescricao("Nada a dizer");
+			l4.setCnpj("1234588");
+			lojaDAO.save(l3);
+			
 			//Carros
 			Carro c1 = new Carro();
 			c1.setLoja(l1);
@@ -127,6 +136,17 @@ public class CarDealershipApplication {
 			cl2.setTelefone("123-5998");
 			clienteDAO.save(cl2);
 			
+			Cliente cl3 = new Cliente();
+			cl2.setEmail("cliente3");
+			cl2.setPapel("CLIENTE");
+			cl2.setSenha(encoder.encode("cliente3"));
+			cl2.setCpf("1245");
+			cl2.setDataDeNascimento(LocalDate.parse("2000-02-02"));
+			cl2.setNome("William");
+			cl2.setSexo("M");
+			cl2.setTelefone("123-5778");
+			clienteDAO.save(cl2);
+			
 			//Propostas
 			Proposta p1 = new Proposta();
 			p1.setCarro(c1);
@@ -145,9 +165,6 @@ public class CarDealershipApplication {
 			p2.setStatus("ACEITO");
 			p2.setValor(BigDecimal.valueOf(2000));
 			propostaDAO.save(p2);
-			
-			
-			
 	};
 	
 	}

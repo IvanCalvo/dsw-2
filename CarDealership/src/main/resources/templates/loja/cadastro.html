@@ -14,11 +14,12 @@
 			<p>
 				<label for="email">Email:</label> 
 				<span th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="text-danger"></span>
-				<input type="text" th:field="*{email}" placeholder="Email" class="form-control mb-4 col-4" required>
+				<input th:if="${loja.id != null}" readonly type="text" th:field="*{email}" placeholder="Email" class="form-control mb-4 col-4" required>
+				<input th:if="${loja.id == null}" type="text" th:field="*{email}" placeholder="Email" class="form-control mb-4 col-4" required>
 				
 				<label for="senha">| Senha:</label> 
 				<span th:if="${#fields.hasErrors('senha')}" th:errors="*{senha}" class="text-danger"></span>
-				<input type="text" th:field="*{senha}" placeholder="Senha" class="form-control mb-4 col-4" required>
+				<input type="password" th:field="*{senha}" placeholder="Senha" class="form-control mb-4 col-4" required>
 			</p>
 				<label for="papel">Papel:</label> 
 				<select class="form-control" th:field="*{papel}"
@@ -36,7 +37,9 @@
 			<p>
 				<label for="cnpj">CNPJ:</label> 
 				<span th:if="${#fields.hasErrors('cnpj')}" th:errors="*{cnpj}" class="text-danger"></span>
-				<input type="number" th:field="*{cnpj}" placeholder="CNPJ" class="form-control mb-4 col-4" required>
+				<input th:if="${loja.id != null}" readonly type="number" th:field="*{cnpj}" placeholder="CNPJ" class="form-control mb-4 col-4" required>
+				<input th:if="${loja.id == null}" type="number" th:field="*{cnpj}" placeholder="CNPJ" class="form-control mb-4 col-4" required>
+			
 			</p>
 			<button type="submit" class="btn btn-info col-2" >Salvar</button>
 

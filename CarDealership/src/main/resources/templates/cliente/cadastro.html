@@ -12,7 +12,8 @@
 			<input type="hidden" id="id" th:field="*{id}">
 			
 			<span th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="text-danger"></span>
-			<input type="text" th:field="*{email}" placeholder="Email" class="form-control mb-4 col-4" required="required">
+			<input th:if="${cliente.id != null}" readonly type="text" th:field="*{email}" placeholder="Email" class="form-control mb-4 col-4" required="required">
+			<input th:if="${cliente.id == null}" type="text" th:field="*{email}" placeholder="Email" class="form-control mb-4 col-4" required="required">
 			
 			<span th:if="${#fields.hasErrors('senha')}" th:errors="*{senha}" class="text-danger"></span>
 			<input type="password" th:field="*{senha}" placeholder="Senha" class="form-control mb-4 col-4" required="required">
@@ -26,7 +27,8 @@
 			<input type="text" th:field="*{nome}" placeholder="Nome" class="form-control mb-4 col-4" required="required">
 			
 			<span th:if="${#fields.hasErrors('cpf')}" th:errors="*{cpf}" class="text-danger"></span>
-			<input type="text" th:field="*{cpf}" placeholder="Cpf" class="form-control mb-4 col-4" required="required">
+			<input th:if="${cliente.id != null}" readonly type="text" th:field="*{cpf}" placeholder="Cpf" class="form-control mb-4 col-4" required="required">
+			<input th:if="${cliente.id == null}" type="text" th:field="*{cpf}" placeholder="Cpf" class="form-control mb-4 col-4" required="required">
 			
 			<span th:if="${#fields.hasErrors('telefone')}" th:errors="*{telefone}" class="text-danger"></span>
 			<input type="text" th:field="*{telefone}" placeholder="Telefone" class="form-control mb-4 col-4" required="required">
