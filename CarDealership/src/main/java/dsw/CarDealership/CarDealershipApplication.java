@@ -58,6 +58,15 @@ public class CarDealershipApplication {
 			l2.setCnpj("1234");
 			lojaDAO.save(l2);
 			
+			Loja l3 = new Loja();
+			l3.setEmail("loja3");
+			l3.setPapel("LOJA");
+			l3.setSenha(encoder.encode("loja3"));
+			l3.setNome("loja3");
+			l3.setDescricao("Nada a dizer");
+			l3.setCnpj("1234588");
+			lojaDAO.save(l3);
+			
 			//Carros
 			Carro c1 = new Carro();
 			c1.setLoja(l1);
@@ -83,6 +92,18 @@ public class CarDealershipApplication {
 			c2.setFotos("caminho");
 			carroDAO.save(c2);
 			
+			Carro c3 = new Carro();
+			c3.setLoja(l3);
+			c3.setPlaca("1234asda");
+			c3.setModelo("Modelo 3");
+			c3.setChassi("asdddddddd");
+			c3.setAno(2355);
+			c3.setQuilometragem(200);
+			c3.setDescricao("algo a dizer?");
+			c3.setValor(BigDecimal.valueOf(20));
+			c3.setFotos("caminho");
+			carroDAO.save(c3);
+			
 			//Clientes
 			Cliente cl1 = new Cliente();
 			cl1.setEmail("cliente");
@@ -94,6 +115,17 @@ public class CarDealershipApplication {
 			cl1.setSexo("M");
 			cl1.setTelefone("123-5888");
 			clienteDAO.save(cl1);
+			
+			Cliente cl2 = new Cliente();
+			cl2.setEmail("cliente2");
+			cl2.setPapel("CLIENTE");
+			cl2.setSenha(encoder.encode("cliente2"));
+			cl2.setCpf("1245645");
+			cl2.setDataDeNascimento(LocalDate.parse("2000-02-02"));
+			cl2.setNome("Robert");
+			cl2.setSexo("M");
+			cl2.setTelefone("123-5998");
+			clienteDAO.save(cl2);
 			
 			//Propostas
 			Proposta p1 = new Proposta();

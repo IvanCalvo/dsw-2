@@ -55,7 +55,7 @@ public class PropostaController {
 	}
 
 	@GetMapping("/listar")
-	public String listar(ModelMap model) {
+	public String listar(ModelMap model, Proposta proposta) {
 		model.addAttribute("propostas", propostaService.buscarTodos());
 		return "proposta/lista";
 	}
@@ -84,9 +84,13 @@ public class PropostaController {
 		if (result.hasErrors()) {
 			return "proposta/cadastro";
 		}
-
+		
 		propostaService.salvar(proposta);
 		attr.addFlashAttribute("sucess", "proposta.edit.sucess");
+		
+		if(this.getUsuario().getPapel().equals("CLIENTE")) {
+			return "redirect:/propostas/listar";
+		}
 		return "redirect:/lojas/listarProposta";
 	}
 	
